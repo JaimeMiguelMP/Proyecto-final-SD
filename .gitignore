@@ -1,0 +1,5 @@
+*.db
+*.log
+historial_mensajes.txt
+__pycache__/
+*.pyc

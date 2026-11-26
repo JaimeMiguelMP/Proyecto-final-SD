@@ -1,5 +1,7 @@
-*.db
-*.log
-historial_mensajes.txt
 __pycache__/
-*.pyc
+*.py[cod]
+*.db
+*.db-wal
+*.db-shm
+*.log
+datos/

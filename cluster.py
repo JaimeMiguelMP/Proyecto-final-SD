@@ -26,7 +26,7 @@ def obtener_ip_local():
 
 
 def obtener_timestamp():
-    return datetime.now().timestamp()
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
 class NodoCluster:
@@ -70,7 +70,7 @@ class NodoCluster:
     # Utilidades de I/O y Transporte TCP
     # ------------------------------------------------------------------
     def log_consenso(self, evento):
-        linea = f"[{obtener_timestamp():.6f}] [Nodo {self.mi_id} - {self.mi_alias}] {evento}"
+        linea = f"[{obtener_timestamp()}] [Nodo {self.mi_id} - {self.mi_alias}] {evento}"
         with self.io_lock:
             with open(self.log_file, "a", encoding="utf-8") as f:
                 f.write(linea + "\n")

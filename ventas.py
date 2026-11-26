@@ -19,8 +19,9 @@ def comprar_unidad(db, datos, fecha):
 
 
 def registrar_venta(db, fila, unidad, cliente, fecha):
-    db.execute("""
+    guia = f'{fila["id_articulo"]}-{fila["serie"]}-{fila["id_sucursal_actual"]}-{cliente}'
+    venta = db.execute("""
         INSERT INTO venta (id_cliente, id_unidad, codigo_guia, fecha_venta)
         VALUES (?, ?, ?, ?)
-    """, (cliente, unidad, f"VENTA-{unidad}", fecha))
-    return {"id_unidad": unidad}
+    """, (cliente, unidad, guia, fecha)).lastrowid
+    return {"id_venta": venta, "id_unidad": unidad, "codigo_guia": guia}

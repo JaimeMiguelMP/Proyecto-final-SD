@@ -100,7 +100,7 @@ class ClusterTest(unittest.TestCase):
 
         self.detener(3)
         self.detener(4)
-        self.esperar(lambda: self.nodos[1].maestro_id == 2)
+        self.esperar(lambda: all(nodo.maestro_id == 2 for nodo in self.nodos.values()))
         exito, detalle, _ = self.nodos[1].solicitar_operacion("PRUEBA_PING", {})
         self.assertFalse(exito)
         self.assertIn("quórum", detalle)
